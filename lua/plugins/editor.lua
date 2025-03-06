@@ -16,6 +16,7 @@ return {
 		desc = "Buffer Local Keymaps (which-key)",
 	    },
 	},
+	{ 'echasnovski/mini.pairs', version = '*' },
     }
 }
 

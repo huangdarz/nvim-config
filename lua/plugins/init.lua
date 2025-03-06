@@ -9,5 +9,5 @@ vim.o.autoindent = true
 vim.keymap.set('i', 'jk', '<Esc>')
 
 return {
-  -- { "folke/lazy.nvim", version = "*" },
+    -- { 'echasnovski/mini.nvim', version = '*' },
 }
