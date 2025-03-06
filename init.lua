@@ -1,3 +1,4 @@
 require("config.lazy")
 
-require('mini.pairs').setup()
+-- theme --
+vim.cmd.colorscheme "catppuccin"
