@@ -1,8 +1,8 @@
 -- vim options --
 vim.o.number = true
 vim.o.relativenumber = true
-vim.api.nvim_create_autocmd("InsertEnter", {command = ":set norelativenumber"})
-vim.api.nvim_create_autocmd("InsertLeave", {command = ":set relativenumber"})
+vim.api.nvim_create_autocmd("InsertEnter", { command = ":set norelativenumber" })
+vim.api.nvim_create_autocmd("InsertLeave", { command = ":set relativenumber" })
 vim.wo.wrap = false
 
 vim.o.shiftwidth = 4
@@ -12,12 +12,17 @@ vim.o.expandtab = true
 vim.opt.listchars = { space = '·', tab = '->', trail = '-' }
 vim.o.list = true
 
+vim.opt.path:append "**"
+vim.o.wildmenu = true
+
 -- keymaps --
 vim.keymap.set('i', 'jk', '<Esc>')
+vim.keymap.set('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = 'Buffer delete' })
 
 return {
     {
-        'nvim-telescope/telescope.nvim', branch = '0.1.x',
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local builtin = require('telescope.builtin')

@@ -40,6 +40,7 @@ return {
             require('mini.tabline').setup()
             require('mini.bracketed').setup()
             require('mini.notify').setup()
+            require('mini.starter').setup()
         end,
     },
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
