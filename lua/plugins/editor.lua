@@ -31,7 +31,7 @@ return {
             require('mini.diff').setup({
                 view = {
                     style = 'sign',
-                    signs = {add = '+', change = '~', delete = '-'}
+                    signs = { add = '+', change = '~', delete = '-' }
                 }
             })
             require('mini.icons').setup()
@@ -43,6 +43,26 @@ return {
             require('mini.starter').setup()
         end,
     },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup({
+                integrations = {
+                    cmp = true,
+                    gitsigns = true,
+                    nvimtree = true,
+                    treesitter = true,
+                    notify = false,
+                    mini = {
+                        enabled = true,
+                        indentscope_color = "lavender",
+                    },
+                    mason = true,
+                }
+            })
+            vim.cmd.colorscheme "catppuccin"
+        end
+    },
 }
-

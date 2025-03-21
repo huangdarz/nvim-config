@@ -1,21 +1,5 @@
 require("config.lazy")
 
--- theme --
-require("catppuccin").setup({
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = {
-            enabled = true,
-            indentscope_color = "lavender",
-        },
-        mason = true,
-    }
-})
-vim.cmd.colorscheme "catppuccin"
 
 -- lsp --
 -- require("mason").setup()
