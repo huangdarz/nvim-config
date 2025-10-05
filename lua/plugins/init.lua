@@ -4,13 +4,14 @@ vim.o.relativenumber = true
 vim.api.nvim_create_autocmd("InsertEnter", { command = ":set norelativenumber" })
 vim.api.nvim_create_autocmd("InsertLeave", { command = ":set relativenumber" })
 vim.wo.wrap = false
+vim.o.signcolumn = "yes"
 
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.autoindent = true
 vim.o.expandtab = true
 
-vim.opt.listchars = { space = '·', tab = '->', trail = '-' }
+vim.opt.listchars = { space = '·', tab = '»-', trail = '-' }
 vim.o.list = true
 
 vim.opt.path:append "**"
@@ -19,6 +20,16 @@ vim.o.wildmenu = true
 -- keymaps --
 vim.keymap.set('i', 'jk', '<Esc>')
 vim.keymap.set('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = 'Buffer delete' })
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    end
+  end,
+})
+
 
 return {
     {
@@ -35,7 +46,8 @@ return {
             vim.keymap.set('n', '<leader>ft', builtin.tags, { desc = 'Telescope ctags' })
             vim.keymap.set('n', '<leader>cr', builtin.lsp_references, { desc = 'Telescope LSP references' })
             vim.keymap.set('n', '<leader>cd', builtin.lsp_definitions, { desc = 'Telescope LSP definitions' })
-            vim.keymap.set('n', '<leader>ci', builtin.lsp_implementations, { desc = 'Telescope LSP implementations' })
+            vim.keymap.set('n', '<leader>ci', builtin.lsp_implementations,
+                { desc = 'Telescope LSP implementations' })
         end
     }
 }

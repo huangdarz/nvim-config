@@ -41,6 +41,7 @@ return {
             require('mini.bracketed').setup()
             require('mini.notify').setup()
             require('mini.starter').setup()
+            require('mini.surround').setup()
         end,
     },
     {
