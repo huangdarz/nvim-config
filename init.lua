@@ -41,6 +41,7 @@ vim.o.wildmenu = true
 
 vim.keymap.set('i', 'jk', '<Esc>')
 vim.keymap.set('n', '<leader>bd', '<cmd>bdelete<cr>', { desc = 'Buffer delete' })
+vim.keymap.set('n', '<leader>fn', '<cmd>Lexplore<cr>', { desc = 'Open Netrw' })
 
 -- Setup lazy.nvim
 require("lazy").setup({
