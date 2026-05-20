@@ -161,7 +161,19 @@ require("lazy").setup({
                     filetypes = { "rust" },
                 }
 
-                vim.lsp.enable({ 'luals', 'rust-analyzer' })
+                vim.lsp.config['clangd'] = {
+                    cmd = { "clangd" },
+                    root_markers = { "compile_commands.json" },
+                    filetypes = { "cpp", "c" },
+                }
+
+                vim.lsp.config['pylsp'] = {
+                    cmd = { 'pylsp' },
+                    root_markers = { 'pyproject.toml' },
+                    filetypes = { "py", "python" },
+                }
+
+                vim.lsp.enable({ 'luals', 'rust-analyzer', 'clangd', 'pylsp' })
 
                 vim.api.nvim_create_autocmd('LspAttach', {
                     callback = function(ev)
@@ -172,7 +184,8 @@ require("lazy").setup({
                     end,
                 })
 
-                vim.cmd("set completeopt+=noselect,menuone")
+                -- vim.cmd("set completeopt+=noselect,menuone")
+                vim.o.completeopt = 'fuzzy,menu,menuone,noinsert'
                 vim.o.winborder = 'rounded'
                 vim.diagnostic.config({ virtual_lines = true })
             end
